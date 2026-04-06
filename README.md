@@ -32,7 +32,6 @@ A stunning finance tracking dashboard built with React and Tailwind CSS v4.
    ```
 
 ## Live Demo
-
-*Deployment link pending...*
+https://finance-dashboard-ui-coral.vercel.app/
 
 ## Created by Raghav.
