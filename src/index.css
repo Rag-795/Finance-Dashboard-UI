@@ -1,1 +1,193 @@
 @import "tailwindcss";
+
+/* Use class-based dark mode so toggling `html.dark` updates all `dark:` utilities. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================
+   ZORVYN FINANCE - Design System
+   Font: Onest | Colors: Navy, Lime, Light Gray
+   ========================================== */
+
+@theme {
+  /* Brand Colors */
+  --color-navy: #071724;
+  --color-navy-light: #0f2235;
+  --color-navy-lighter: #163049;
+  --color-lime: #bdf75c;
+  --color-lime-dark: #a5db4a;
+  --color-lime-light: #d4fc8e;
+  --color-light: #f7f7f7;
+  --color-light-dark: #e8e8e8;
+  --color-gray-soft: #f0f0f0;
+  --color-dark-bg: #0a1018;
+  --color-dark-card: #111b27;
+  --color-dark-border: #1e2d3d;
+
+  /* Semantic Colors */
+  --color-income: #22c55e;
+  --color-expense: #ef4444;
+  --color-info: #3b82f6;
+  --color-warning: #f59e0b;
+
+  /* Chart Colors */
+  --color-chart-1: #bdf75c;
+  --color-chart-2: #3b82f6;
+  --color-chart-3: #8b5cf6;
+  --color-chart-4: #f59e0b;
+  --color-chart-5: #ef4444;
+  --color-chart-6: #06b6d4;
+
+  /* Font Family */
+  --font-sans: 'Onest', system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+  --shadow-sidebar: 4px 0 15px rgba(0, 0, 0, 0.05);
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.4s ease-out;
+  --animate-slide-in-left: slide-in-left 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==========================================
+   Base Styles
+   ========================================== */
+:root{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Onest', system-ui, sans-serif;
+  background-color: #f7f7f7;
+  color: #071724;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Dark mode body styles */
+.dark body {
+  background-color: #0a1018;
+  color: #e8e8e8;
+}
+
+/* Dashboard layout — sidebar offset on desktop */
+.dashboard-main {
+  margin-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .dashboard-main {
+    margin-left: var(--sidebar-width, 16rem);
+  }
+}
+
+/* ==========================================
+   Scrollbar Styling
+   ========================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2a3a4a;
+}
+
+/* ==========================================
+   Custom Utility Classes
+   ========================================== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-card {
+  background: rgba(17, 27, 39, 0.7);
+  border: 1px solid rgba(30, 45, 61, 0.5);
+}
+
+/* Gradient backgrounds for landing page */
+.gradient-hero {
+  background: linear-gradient(135deg, #071724 0%, #0f2235 40%, #163049 100%);
+}
+
+.gradient-lime {
+  background: linear-gradient(135deg, #bdf75c 0%, #a5db4a 100%);
+}
+
+/* Recharts tooltip styling */
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+.custom-tooltip {
+  background: white;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark .custom-tooltip {
+  background: #111b27;
+  border-color: #1e2d3d;
+}
